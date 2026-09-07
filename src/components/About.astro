@@ -1,6 +1,6 @@
 ---
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
+import type { Lang } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -8,19 +8,19 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const facts = ['about.fact1', 'about.fact2', 'about.fact3'] as const;
+const facts = ["about.fact1", "about.fact2", "about.fact3"] as const;
 ---
 
 <section class="section section-breathe about" id="nosotros">
   <div class="wrap grid">
     <div class="copy" data-reveal>
-      <p class="overline">{t('about.overline')}</p>
-      <h2>{t('about.title')}</h2>
-      <p>{t('about.p1')}</p>
-      <p>{t('about.p2')}</p>
+      <span class="overline-pill">{t("about.overline")}</span>
+      <h2>{t("about.title")}</h2>
+      <p>{t("about.p1")}</p>
+      <p>{t("about.p2")}</p>
     </div>
     <div class="aside">
-      <p class="overline" data-reveal>{t('about.aside')}</p>
+      <p class="overline" data-reveal>{t("about.aside")}</p>
       <ul data-stagger>
         {facts.map((key) => <li>{t(key)}</li>)}
       </ul>
@@ -56,9 +56,13 @@ const facts = ['about.fact1', 'about.fact2', 'about.fact3'] as const;
     max-width: 40em;
   }
 
-  .copy p + p:not(.overline) { margin-top: 14px; }
+  .copy p + p:not(.overline) {
+    margin-top: 14px;
+  }
 
-  .aside .overline { margin-bottom: 8px; }
+  .aside .overline {
+    margin-bottom: 8px;
+  }
 
   li {
     font-family: var(--font-mono);
@@ -68,16 +72,23 @@ const facts = ['about.fact1', 'about.fact2', 'about.fact3'] as const;
     padding: 17px 2px;
   }
 
-  li:last-child { border-bottom: 1px solid var(--border); }
+  li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
 
   li::before {
-    content: '—';
+    content: "—";
     color: var(--blue-text);
     margin-right: 12px;
   }
 
   @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr; gap: 40px; }
-    .section-breathe { padding-block: 92px; }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .section-breathe {
+      padding-block: 92px;
+    }
   }
 </style>

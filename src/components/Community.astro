@@ -1,6 +1,6 @@
 ---
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
+import type { Lang } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -8,15 +8,20 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const rules = ['community.rule1', 'community.rule2', 'community.rule3', 'community.rule4'] as const;
+const rules = [
+  "community.rule1",
+  "community.rule2",
+  "community.rule3",
+  "community.rule4",
+] as const;
 ---
 
 <section class="section community" id="normas">
   <div class="wrap grid">
     <div class="copy" data-reveal>
-      <p class="overline">{t('community.overline')}</p>
-      <h2>{t('community.title')}</h2>
-      <p>{t('community.lead')}</p>
+      <span class="overline-pill">{t("community.overline")}</span>
+      <h2>{t("community.title")}</h2>
+      <p>{t("community.lead")}</p>
     </div>
     <ul class="rules" data-stagger>
       {rules.map((key) => <li>{t(key)}</li>)}
@@ -25,7 +30,9 @@ const rules = ['community.rule1', 'community.rule2', 'community.rule3', 'communi
 </section>
 
 <style>
-  .community { border-top: 1px solid var(--border); }
+  .community {
+    border-top: 1px solid var(--border);
+  }
 
   .grid {
     display: grid;
@@ -43,7 +50,10 @@ const rules = ['community.rule1', 'community.rule2', 'community.rule3', 'communi
     text-wrap: balance;
   }
 
-  .copy p:not(.overline) { color: var(--muted); max-width: 38em; }
+  .copy p:not(.overline) {
+    color: var(--muted);
+    max-width: 38em;
+  }
 
   li {
     font-family: var(--font-mono);
@@ -53,15 +63,20 @@ const rules = ['community.rule1', 'community.rule2', 'community.rule3', 'communi
     padding: 16px 2px;
   }
 
-  li:last-child { border-bottom: 1px solid var(--border); }
+  li:last-child {
+    border-bottom: 1px solid var(--border);
+  }
 
   li::before {
-    content: '—';
+    content: "—";
     color: var(--red-text);
     margin-right: 12px;
   }
 
   @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr; gap: 36px; }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
   }
 </style>

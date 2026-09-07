@@ -1,7 +1,7 @@
 ---
-import { useTranslations, type DictKey } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
-import { serviceIcons, serviceItems } from '@data/site';
+import { serviceIcons, serviceItems } from "@data/site";
+import type { Lang } from "@i18n/ui";
+import { useTranslations, type DictKey } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -14,14 +14,17 @@ const t = useTranslations(lang);
 <section class="section" id="servicios">
   <div class="wrap">
     <div class="sec-head" data-reveal>
-      <p class="overline">{t('services.overline')}</p>
-      <h2>{t('services.title')}</h2>
-      <p class="lead">{t('services.lead')}</p>
+      <span class="overline-pill">{t("services.overline")}</span>
+      <h2>{t("services.title")}</h2>
+      <p class="lead">{t("services.lead")}</p>
     </div>
     <div class="cards" data-stagger>
       {
         serviceItems.map((item) => (
-          <article class:list={['card', 'border-glow-card', { wide: item.wide }]} data-border-glow>
+          <article
+            class:list={["card", "border-glow-card", { wide: item.wide }]}
+            data-border-glow
+          >
             <span class="edge-light" aria-hidden="true" />
             <div class="border-glow-inner">
               <svg
@@ -35,8 +38,8 @@ const t = useTranslations(lang);
                 aria-hidden="true"
                 set:html={serviceIcons[item.icon]}
               />
-              <h3>{t(('services.' + item.key + '.title') as DictKey)}</h3>
-              <p>{t(('services.' + item.key + '.text') as DictKey)}</p>
+              <h3>{t(("services." + item.key + ".title") as DictKey)}</h3>
+              <p>{t(("services." + item.key + ".text") as DictKey)}</p>
             </div>
           </article>
         ))
@@ -46,7 +49,9 @@ const t = useTranslations(lang);
 </section>
 
 <style>
-  .sec-head { margin-bottom: 52px; }
+  .sec-head {
+    margin-bottom: 52px;
+  }
 
   h2 {
     font-size: clamp(1.8rem, 3.2vw, 2.5rem);
@@ -65,9 +70,13 @@ const t = useTranslations(lang);
     transition: transform 200ms var(--ease);
   }
 
-  .card:hover { transform: translateY(-3px); }
+  .card:hover {
+    transform: translateY(-3px);
+  }
 
-  .card.wide { grid-column: span 2; }
+  .card.wide {
+    grid-column: span 2;
+  }
 
   .card :global(.border-glow-inner) {
     padding: 34px;
@@ -82,7 +91,9 @@ const t = useTranslations(lang);
     transition: color var(--fast) var(--ease);
   }
 
-  .card:hover .icon { color: var(--blue-text); }
+  .card:hover .icon {
+    color: var(--blue-text);
+  }
 
   h3 {
     font-size: 1.18rem;
@@ -91,10 +102,18 @@ const t = useTranslations(lang);
     margin-bottom: 9px;
   }
 
-  .card p { color: var(--muted); font-size: 0.97rem; max-width: 34em; }
+  .card p {
+    color: var(--muted);
+    font-size: 0.97rem;
+    max-width: 34em;
+  }
 
   @media (max-width: 880px) {
-    .cards { grid-template-columns: 1fr; }
-    .card.wide { grid-column: auto; }
+    .cards {
+      grid-template-columns: 1fr;
+    }
+    .card.wide {
+      grid-column: auto;
+    }
   }
 </style>
