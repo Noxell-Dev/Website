@@ -1,6 +1,6 @@
 ---
-import { localeUrl, useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
+import type { Lang } from "@i18n/ui";
+import { localeUrl, useTranslations } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -15,33 +15,45 @@ const base = localeUrl(lang);
 <header class="site-header">
   <div class="pill">
     <a class="brand" href={base}>
-      <span class="mark"><img src="/logoazul.png" alt="" width="34" height="34" loading="eager" /></span>
+      <span class="mark"
+        ><img
+          src="/logorojo.png"
+          alt=""
+          width="34"
+          height="34"
+          loading="eager"
+        /></span
+      >
       <span class="word">noxell<span class="dot">.dev</span></span>
     </a>
-    <nav aria-label={t('nav.menu')}>
-      <a href={`${base}#servicios`}>{t('nav.services')}</a>
-      <a href={`${base}#nosotros`}>{t('nav.about')}</a>
-      <a href={`${base}#metodologia`}>{t('nav.method')}</a>
-      <a href={`${base}#contacto`}>{t('nav.contact')}</a>
+    <nav aria-label={t("nav.menu")}>
+      <a href={`${base}#servicios`}>{t("nav.services")}</a>
+      <a href={`${base}#nosotros`}>{t("nav.about")}</a>
+      <a href={`${base}#metodologia`}>{t("nav.method")}</a>
+      <a href={`${base}#contacto`}>{t("nav.contact")}</a>
     </nav>
     <div class="actions">
       <div class="lang" role="group" aria-label="Idioma / Language">
         <a
-          href={lang === 'es' ? Astro.url.pathname : altUrl}
-          hreflang={lang === 'es' ? 'es' : 'es'}
-          aria-current={lang === 'es' ? 'page' : undefined}
-          class:list={['lang-opt', { active: lang === 'es' }]}
-        >ES</a>
+          href={lang === "es" ? Astro.url.pathname : altUrl}
+          hreflang={lang === "es" ? "es" : "es"}
+          aria-current={lang === "es" ? "page" : undefined}
+          class:list={["lang-opt", { active: lang === "es" }]}>ES</a
+        >
         <a
-          href={lang === 'en' ? Astro.url.pathname : altUrl}
-          hreflang={lang === 'en' ? 'en' : 'en'}
-          aria-current={lang === 'en' ? 'page' : undefined}
-          class:list={['lang-opt', { active: lang === 'en' }]}
-        >EN</a>
+          href={lang === "en" ? Astro.url.pathname : altUrl}
+          hreflang={lang === "en" ? "en" : "en"}
+          aria-current={lang === "en" ? "page" : undefined}
+          class:list={["lang-opt", { active: lang === "en" }]}>EN</a
+        >
       </div>
-      <a class="btn-specular btn-specular--sm" data-specular href={`${base}#contacto`}>
+      <a
+        class="btn-specular btn-specular--sm"
+        data-specular
+        href={`${base}#contacto`}
+      >
         <span class="spec-fx" aria-hidden="true"></span>
-        <span class="btn-label">{t('nav.cta')}</span>
+        <span class="btn-label">{t("nav.cta")}</span>
       </a>
     </div>
   </div>
@@ -73,16 +85,17 @@ const base = localeUrl(lang);
     box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4);
   }
 
-  .brand { display: inline-flex; align-items: center; gap: 12px; }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
 
   .mark {
     position: relative;
     display: block;
     width: 34px;
     height: 34px;
-    background: #000000;
-    border: 1px solid var(--border);
-    border-radius: 10px;
     overflow: hidden;
   }
 
@@ -103,9 +116,14 @@ const base = localeUrl(lang);
     font-size: 1.02rem;
   }
 
-  .dot { color: var(--blue-text); }
+  .dot {
+    color: var(--red-text);
+  }
 
-  nav { display: flex; gap: 26px; }
+  nav {
+    display: flex;
+    gap: 26px;
+  }
 
   nav a {
     font-size: 0.92rem;
@@ -114,9 +132,15 @@ const base = localeUrl(lang);
     transition: color var(--fast) var(--ease);
   }
 
-  nav a:hover { color: var(--fg); }
+  nav a:hover {
+    color: var(--fg);
+  }
 
-  .actions { display: flex; align-items: center; gap: 10px; }
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
   /* iOS segmented language control */
   .lang {
@@ -139,7 +163,9 @@ const base = localeUrl(lang);
       background-color var(--fast) var(--ease);
   }
 
-  .lang-opt:hover:not(.active) { color: var(--fg); }
+  .lang-opt:hover:not(.active) {
+    color: var(--fg);
+  }
 
   .lang-opt.active {
     background: rgba(255, 255, 255, 0.14);
@@ -147,7 +173,11 @@ const base = localeUrl(lang);
   }
 
   @media (max-width: 720px) {
-    nav { display: none; }
-    .pill { padding-left: 14px; }
+    nav {
+      display: none;
+    }
+    .pill {
+      padding-left: 14px;
+    }
   }
 </style>

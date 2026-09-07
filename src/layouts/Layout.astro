@@ -1,13 +1,13 @@
 ---
-import '@fontsource-variable/bricolage-grotesque';
-import '@fontsource-variable/inter';
-import '@fontsource-variable/jetbrains-mono';
-import '@styles/global.css';
-import '@styles/specular.css';
-import Header from '@components/Header.astro';
-import Footer from '@components/Footer.astro';
-import { localeUrl, useTranslations } from '@i18n/utils';
-import { defaultLang, type Lang } from '@i18n/ui';
+import "@fontsource-variable/bricolage-grotesque";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
+import "@styles/global.css";
+import "@styles/specular.css";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { localeUrl, useTranslations } from "@i18n/utils";
+import { defaultLang, type Lang } from "@i18n/ui";
 
 interface Props {
   lang: Lang;
@@ -17,14 +17,18 @@ interface Props {
   path?: string;
 }
 
-const { lang, title, description, path = '' } = Astro.props;
+const { lang, title, description, path = "" } = Astro.props;
 const t = useTranslations(lang);
 
-const siteUrl = Astro.site ?? new URL('https://noxell.dev');
+const siteUrl = Astro.site ?? new URL("https://noxell.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const ogImage = new URL('/logoazul.png', siteUrl);
-const urlFor = (locale: Lang) => new URL(localeUrl(locale, path || undefined), siteUrl);
-const altUrl = localeUrl(lang === defaultLang ? 'en' : defaultLang, path || undefined);
+const ogImage = new URL("/logorojo.png", siteUrl);
+const urlFor = (locale: Lang) =>
+  new URL(localeUrl(locale, path || undefined), siteUrl);
+const altUrl = localeUrl(
+  lang === defaultLang ? "en" : defaultLang,
+  path || undefined,
+);
 ---
 
 <!doctype html>
@@ -35,12 +39,12 @@ const altUrl = localeUrl(lang === defaultLang ? 'en' : defaultLang, path || unde
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="es" href={urlFor('es')} />
-    <link rel="alternate" hreflang="en" href={urlFor('en')} />
+    <link rel="alternate" hreflang="es" href={urlFor("es")} />
+    <link rel="alternate" hreflang="en" href={urlFor("en")} />
     <link rel="alternate" hreflang="x-default" href={urlFor(defaultLang)} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="icon" type="image/png" href="/logoazul.png" />
-    <link rel="apple-touch-icon" href="/logoazul.png" />
+    <link rel="icon" type="image/png" href="/logorojo.png" />
+    <link rel="apple-touch-icon" href="/logorojo.png" />
     <meta name="theme-color" content="#0a0a0d" />
     <meta name="generator" content={Astro.generator} />
     <meta property="og:title" content={title} />
@@ -53,17 +57,17 @@ const altUrl = localeUrl(lang === defaultLang ? 'en' : defaultLang, path || unde
   </head>
   <body>
     <div class="aurora" data-aurora aria-hidden="true"></div>
-    <a class="skip-link" href="#main">{t('nav.skip')}</a>
+    <a class="skip-link" href="#main">{t("nav.skip")}</a>
     <Header lang={lang} altUrl={altUrl} />
     <main id="main">
       <slot />
     </main>
     <Footer lang={lang} />
     <script>
-      import '../scripts/motion';
-      import '../scripts/aurora';
-      import '../scripts/specular';
-      import '../scripts/glow';
+      import "../scripts/aurora";
+      import "../scripts/glow";
+      import "../scripts/motion";
+      import "../scripts/specular";
     </script>
   </body>
 </html>

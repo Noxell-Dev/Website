@@ -1,7 +1,7 @@
 ---
-import { localeUrl, useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
-import { site, socials } from '@data/site';
+import { site, socials } from "@data/site";
+import type { Lang } from "@i18n/ui";
+import { localeUrl, useTranslations } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -16,17 +16,25 @@ const base = localeUrl(lang);
   <div class="wrap grid">
     <div class="brand">
       <p class="mark-row">
-        <span class="mark"><img src="/logoazul.png" alt="" width="44" height="44" loading="lazy" /></span>
+        <span class="mark"
+          ><img
+            src="/logorojo.png"
+            alt=""
+            width="44"
+            height="44"
+            loading="lazy"
+          /></span
+        >
         <span class="word">noxell<span class="dot">.dev</span></span>
       </p>
-      <p class="tagline">{t('footer.tagline')}</p>
+      <p class="tagline">{t("footer.tagline")}</p>
     </div>
     <div>
-      <h4>{t('footer.contact')}</h4>
+      <h4>{t("footer.contact")}</h4>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </div>
     <div>
-      <h4>{t('footer.social')}</h4>
+      <h4>{t("footer.social")}</h4>
       {
         socials.map((social) => (
           <a href={social.href} target="_blank" rel="noopener">
@@ -36,13 +44,13 @@ const base = localeUrl(lang);
       }
     </div>
     <div>
-      <h4>{t('footer.legal')}</h4>
-      <a href={`${base}#normas`}>{t('footer.rules')}</a>
-      <a href={localeUrl(lang, 'terms')}>{t('footer.terms')}</a>
+      <h4>{t("footer.legal")}</h4>
+      <a href={`${base}#normas`}>{t("footer.rules")}</a>
+      <a href={localeUrl(lang, "terms")}>{t("footer.terms")}</a>
     </div>
   </div>
   <div class="wrap bottom">
-    <p>{t('footer.rights')}</p>
+    <p>{t("footer.rights")}</p>
   </div>
 </footer>
 
@@ -61,16 +69,17 @@ const base = localeUrl(lang);
     gap: 32px;
   }
 
-  .mark-row { display: flex; align-items: center; gap: 13px; }
+  .mark-row {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
 
   .mark {
     position: relative;
     display: block;
     width: 44px;
     height: 44px;
-    background: #000000;
-    border: 1px solid var(--border);
-    border-radius: 12px;
     overflow: hidden;
   }
 
@@ -91,7 +100,9 @@ const base = localeUrl(lang);
     color: var(--fg);
   }
 
-  .dot { color: var(--blue-text); }
+  .dot {
+    color: var(--red-text);
+  }
 
   .tagline {
     margin-top: 16px;
@@ -115,7 +126,9 @@ const base = localeUrl(lang);
     transition: color var(--fast) var(--ease);
   }
 
-  a:hover { color: var(--fg); }
+  a:hover {
+    color: var(--fg);
+  }
 
   .bottom {
     border-top: 1px solid var(--border);
@@ -126,10 +139,15 @@ const base = localeUrl(lang);
   }
 
   @media (max-width: 880px) {
-    .grid { grid-template-columns: 1fr 1fr; }
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 560px) {
-    .grid { grid-template-columns: 1fr; gap: 26px; }
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
   }
 </style>
