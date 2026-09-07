@@ -1,0 +1,50 @@
+---
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { site } from '@data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="cta" id="contacto">
+  <div class="wrap" data-reveal>
+    <h2>{t('cta.title')}</h2>
+    <p>{t('cta.lead')}</p>
+    <a class="btn-specular btn-specular--md" data-specular href={`mailto:${site.email}`}>
+      <span class="spec-fx" aria-hidden="true"></span>
+      <span class="btn-label">{t('cta.button')}</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    text-align: center;
+    padding: 136px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin-bottom: 18px;
+    text-wrap: balance;
+  }
+
+  p {
+    color: var(--muted);
+    max-width: 36em;
+    margin: 0 auto 38px;
+  }
+
+  @media (max-width: 900px) {
+    .cta { padding: 100px 0; }
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+import { useTranslations, type DictKey } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { serviceIcons, serviceItems } from '@data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" id="servicios">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="overline">{t('services.overline')}</p>
+      <h2>{t('services.title')}</h2>
+      <p class="lead">{t('services.lead')}</p>
+    </div>
+    <div class="cards" data-stagger>
+      {
+        serviceItems.map((item) => (
+          <article class:list={['card', 'border-glow-card', { wide: item.wide }]} data-border-glow>
+            <span class="edge-light" aria-hidden="true" />
+            <div class="border-glow-inner">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                set:html={serviceIcons[item.icon]}
+              />
+              <h3>{t(('services.' + item.key + '.title') as DictKey)}</h3>
+              <p>{t(('services.' + item.key + '.text') as DictKey)}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head { margin-bottom: 52px; }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    margin: 16px 0 14px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    transition: transform 200ms var(--ease);
+  }
+
+  .card:hover { transform: translateY(-3px); }
+
+  .card.wide { grid-column: span 2; }
+
+  .card :global(.border-glow-inner) {
+    padding: 34px;
+    height: 100%;
+  }
+
+  .icon {
+    width: 23px;
+    height: 23px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    transition: color var(--fast) var(--ease);
+  }
+
+  .card:hover .icon { color: var(--blue-text); }
+
+  h3 {
+    font-size: 1.18rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-bottom: 9px;
+  }
+
+  .card p { color: var(--muted); font-size: 0.97rem; max-width: 34em; }
+
+  @media (max-width: 880px) {
+    .cards { grid-template-columns: 1fr; }
+    .card.wide { grid-column: auto; }
+  }
+</style>

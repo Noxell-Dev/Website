@@ -1,0 +1,98 @@
+---
+import { useTranslations, type DictKey } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { methodSteps } from '@data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" id="metodologia">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <p class="overline">{t('method.overline')}</p>
+      <h2>{t('method.title')}</h2>
+      <p class="lead">{t('method.lead')}</p>
+    </div>
+    <ol class="steps" data-stagger>
+      <span class="rail" aria-hidden="true"></span>
+      <span class="fill" data-line aria-hidden="true"></span>
+      {
+        methodSteps.map((step) => (
+          <li>
+            <span class="num">{step.num}</span>
+            <div>
+              <h3>{t(('method.' + step.key + '.title') as DictKey)}</h3>
+              <p>{t(('method.' + step.key + '.text') as DictKey)}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .sec-head { margin-bottom: 52px; }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    margin: 16px 0 14px;
+  }
+
+  .steps {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* scroll-drawn progress line through the step numbers */
+  .rail,
+  .fill {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+
+  .rail { background: var(--border-strong); }
+
+  .fill { background: var(--blue-text); }
+
+  li {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 24px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--blue-text);
+    padding: 6px 0 0 26px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  h3 {
+    font-size: 1.18rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin-bottom: 7px;
+  }
+
+  li p { color: var(--muted); max-width: 42em; }
+
+  @media (max-width: 640px) {
+    li { grid-template-columns: 56px 1fr; }
+    .rail, .fill { left: 8px; }
+    .num { padding-left: 18px; }
+  }
+</style>

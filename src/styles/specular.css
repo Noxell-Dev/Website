@@ -1,0 +1,52 @@
+/* SpecularButton — CSS shell for the WebGL specular rim (see scripts/specular.ts) */
+
+.btn-specular {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin: 0;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  color: #ffffff;
+  background: var(--red);
+  border-radius: 999px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 10px 30px rgba(220, 18, 18, 0.3);
+  transition: transform 150ms var(--ease);
+}
+
+.btn-specular:hover { background: var(--red-hover); }
+
+.btn-specular:active { transform: scale(0.97); }
+
+.btn-specular:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 3px;
+}
+
+.btn-specular--sm { font-size: 0.85rem; padding: 9px 18px; min-height: 36px; }
+.btn-specular--md { font-size: 0.98rem; padding: 14px 30px; min-height: 48px; }
+
+/* canvas extends past the button so the rim glow bleeds outside the edge */
+.spec-fx {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.spec-fx canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-label { position: relative; z-index: 2; }

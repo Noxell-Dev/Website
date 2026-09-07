@@ -1,0 +1,69 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
+import '@styles/global.css';
+import '@styles/specular.css';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import { localeUrl, useTranslations } from '@i18n/utils';
+import { defaultLang, type Lang } from '@i18n/ui';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Page path without locale prefix: '' for home, 'terms' for terms. */
+  path?: string;
+}
+
+const { lang, title, description, path = '' } = Astro.props;
+const t = useTranslations(lang);
+
+const siteUrl = Astro.site ?? new URL('https://noxell.dev');
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const ogImage = new URL('/logoazul.png', siteUrl);
+const urlFor = (locale: Lang) => new URL(localeUrl(locale, path || undefined), siteUrl);
+const altUrl = localeUrl(lang === defaultLang ? 'en' : defaultLang, path || undefined);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={urlFor('es')} />
+    <link rel="alternate" hreflang="en" href={urlFor('en')} />
+    <link rel="alternate" hreflang="x-default" href={urlFor(defaultLang)} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/png" href="/logoazul.png" />
+    <link rel="apple-touch-icon" href="/logoazul.png" />
+    <meta name="theme-color" content="#0a0a0d" />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <div class="aurora" data-aurora aria-hidden="true"></div>
+    <a class="skip-link" href="#main">{t('nav.skip')}</a>
+    <Header lang={lang} altUrl={altUrl} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/motion';
+      import '../scripts/aurora';
+      import '../scripts/specular';
+      import '../scripts/glow';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+import Layout from '@layouts/Layout.astro';
+import { useTranslations } from '@i18n/utils';
+import { defaultLang } from '@i18n/ui';
+
+const lang = defaultLang;
+const t = useTranslations(lang);
+---
+
+<Layout
+  lang={lang}
+  title={t('meta.404.title')}
+  description={t('meta.404.title')}
+>
+  <section class="lost">
+    <div class="wrap">
+      <p class="code">{t('err404.code')}</p>
+      <h1>{t('err404.title')}</h1>
+      <p class="text">{t('err404.text')}</p>
+      <a class="btn btn-accent" href="/">{t('err404.home')}</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lost { padding: 140px 0 160px; }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--blue-text);
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 650;
+    letter-spacing: -0.025em;
+    margin-bottom: 10px;
+  }
+
+  .text {
+    color: var(--muted);
+    margin-bottom: 34px;
+  }
+</style>

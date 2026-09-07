@@ -1,0 +1,135 @@
+---
+import { localeUrl, useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { site, socials } from '@data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const base = localeUrl(lang);
+---
+
+<footer class="site-footer">
+  <div class="wrap grid">
+    <div class="brand">
+      <p class="mark-row">
+        <span class="mark"><img src="/logoazul.png" alt="" width="44" height="44" loading="lazy" /></span>
+        <span class="word">noxell<span class="dot">.dev</span></span>
+      </p>
+      <p class="tagline">{t('footer.tagline')}</p>
+    </div>
+    <div>
+      <h4>{t('footer.contact')}</h4>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+    <div>
+      <h4>{t('footer.social')}</h4>
+      {
+        socials.map((social) => (
+          <a href={social.href} target="_blank" rel="noopener">
+            {social.label} ↗
+          </a>
+        ))
+      }
+    </div>
+    <div>
+      <h4>{t('footer.legal')}</h4>
+      <a href={`${base}#normas`}>{t('footer.rules')}</a>
+      <a href={localeUrl(lang, 'terms')}>{t('footer.terms')}</a>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <p>{t('footer.rights')}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #08080a;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    padding: 76px 0 30px;
+    font-size: 0.94rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 32px;
+  }
+
+  .mark-row { display: flex; align-items: center; gap: 13px; }
+
+  .mark {
+    position: relative;
+    display: block;
+    width: 44px;
+    height: 44px;
+    background: #000000;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Measured from logoazul.png — knot renders at exactly 88% of the tile. */
+  .mark img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 191%;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .word {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: var(--fg);
+  }
+
+  .dot { color: var(--blue-text); }
+
+  .tagline {
+    margin-top: 16px;
+    max-width: 22em;
+  }
+
+  h4 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 14px;
+  }
+
+  a {
+    display: block;
+    padding: 5px 0;
+    color: var(--muted);
+    transition: color var(--fast) var(--ease);
+  }
+
+  a:hover { color: var(--fg); }
+
+  .bottom {
+    border-top: 1px solid var(--border);
+    margin-top: 52px;
+    padding-top: 24px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 560px) {
+    .grid { grid-template-columns: 1fr; gap: 26px; }
+  }
+</style>

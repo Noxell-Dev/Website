@@ -1,0 +1,70 @@
+---
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Built in frontmatter: the Astro compiler mangles \n escapes inside
+// template expressions, so the <pre> body is rendered via set:html.
+const body =
+  `<span class="prompt">$ </span><span data-type>${t('terminal.cmd')}</span>\n` +
+  `<span class="dim">→ ${t('terminal.line1')}</span>\n` +
+  `<span class="dim">→ ${t('terminal.line2')}</span>\n` +
+  `<span class="prompt">$ </span>`;
+---
+
+<div class="term" aria-hidden="true">
+  <div class="bar"><span></span><span></span><span></span></div>
+  <pre><Fragment set:html={body} /><span class="cursor"></span></pre>
+</div>
+
+<style>
+  .term {
+    background: var(--bg-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .bar {
+    display: flex;
+    gap: 7px;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .bar span { width: 10px; height: 10px; border-radius: 50%; background: #23232b; }
+
+  pre {
+    padding: 20px 18px 24px;
+    line-height: 2;
+    color: #e3e3e6;
+    white-space: pre-wrap;
+  }
+
+  .prompt { color: var(--blue-text); }
+  .dim { color: var(--muted); }
+
+  .cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 1.05em;
+    background: var(--red-hover);
+    vertical-align: text-bottom;
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes blink { 50% { opacity: 0; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cursor { animation: none; }
+  }
+</style>

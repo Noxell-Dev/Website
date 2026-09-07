@@ -1,0 +1,153 @@
+---
+import { localeUrl, useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+
+interface Props {
+  lang: Lang;
+  altUrl: string;
+}
+
+const { lang, altUrl } = Astro.props;
+const t = useTranslations(lang);
+const base = localeUrl(lang);
+---
+
+<header class="site-header">
+  <div class="pill">
+    <a class="brand" href={base}>
+      <span class="mark"><img src="/logoazul.png" alt="" width="34" height="34" loading="eager" /></span>
+      <span class="word">noxell<span class="dot">.dev</span></span>
+    </a>
+    <nav aria-label={t('nav.menu')}>
+      <a href={`${base}#servicios`}>{t('nav.services')}</a>
+      <a href={`${base}#nosotros`}>{t('nav.about')}</a>
+      <a href={`${base}#metodologia`}>{t('nav.method')}</a>
+      <a href={`${base}#contacto`}>{t('nav.contact')}</a>
+    </nav>
+    <div class="actions">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <a
+          href={lang === 'es' ? Astro.url.pathname : altUrl}
+          hreflang={lang === 'es' ? 'es' : 'es'}
+          aria-current={lang === 'es' ? 'page' : undefined}
+          class:list={['lang-opt', { active: lang === 'es' }]}
+        >ES</a>
+        <a
+          href={lang === 'en' ? Astro.url.pathname : altUrl}
+          hreflang={lang === 'en' ? 'en' : 'en'}
+          aria-current={lang === 'en' ? 'page' : undefined}
+          class:list={['lang-opt', { active: lang === 'en' }]}
+        >EN</a>
+      </div>
+      <a class="btn-specular btn-specular--sm" data-specular href={`${base}#contacto`}>
+        <span class="spec-fx" aria-hidden="true"></span>
+        <span class="btn-label">{t('nav.cta')}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 12px;
+    z-index: 40;
+    padding-inline: 16px;
+  }
+
+  /* floating iOS-style glass pill */
+  .pill {
+    max-width: 920px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    height: 62px;
+    padding: 0 10px 0 20px;
+    border-radius: 999px;
+    background: rgba(15, 15, 21, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4);
+  }
+
+  .brand { display: inline-flex; align-items: center; gap: 12px; }
+
+  .mark {
+    position: relative;
+    display: block;
+    width: 34px;
+    height: 34px;
+    background: #000000;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Measured from logoazul.png (1094x976, knot = 504px, centered):
+     sizing the img to 191% of the tile renders the knot at exactly 88%. */
+  .mark img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 191%;
+    height: auto;
+    transform: translate(-50%, -50%);
+  }
+
+  .word {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.02rem;
+  }
+
+  .dot { color: var(--blue-text); }
+
+  nav { display: flex; gap: 26px; }
+
+  nav a {
+    font-size: 0.92rem;
+    color: var(--muted);
+    padding: 10px 2px;
+    transition: color var(--fast) var(--ease);
+  }
+
+  nav a:hover { color: var(--fg); }
+
+  .actions { display: flex; align-items: center; gap: 10px; }
+
+  /* iOS segmented language control */
+  .lang {
+    display: flex;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 3px;
+  }
+
+  .lang-opt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding: 6px 11px;
+    border-radius: 999px;
+    transition:
+      color var(--fast) var(--ease),
+      background-color var(--fast) var(--ease);
+  }
+
+  .lang-opt:hover:not(.active) { color: var(--fg); }
+
+  .lang-opt.active {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--fg);
+  }
+
+  @media (max-width: 720px) {
+    nav { display: none; }
+    .pill { padding-left: 14px; }
+  }
+</style>
