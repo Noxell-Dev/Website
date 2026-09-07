@@ -5,7 +5,7 @@ export const site = {
 
 export const socials = [
   { label: 'GitHub', href: 'https://github.com/Noxell-Dev' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com' },
+  { label: 'Discord', href: 'https://discord.gg/QY4N6xx5BW' },
   { label: 'Instagram', href: 'https://www.instagram.com/noxell.dev/' },
 ] as const;
 
