@@ -4,9 +4,9 @@ export const site = {
 } as const;
 
 export const socials = [
-  { label: 'GitHub', href: 'https://github.com' },
+  { label: 'GitHub', href: 'https://github.com/Noxell-Dev' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com' },
-  { label: 'X', href: 'https://x.com' },
+  { label: 'Instagram', href: 'https://www.instagram.com/noxell.dev/' },
 ] as const;
 
 export type ServiceKey = 'web' | 'ai' | 'gaming' | 'scripts';
@@ -17,11 +17,11 @@ export const serviceItems: readonly {
   icon: IconName;
   wide: boolean;
 }[] = [
-  { key: 'web', icon: 'frame', wide: true },
-  { key: 'ai', icon: 'nodes', wide: false },
-  { key: 'gaming', icon: 'gamepad', wide: false },
-  { key: 'scripts', icon: 'braces', wide: true },
-];
+    { key: 'web', icon: 'frame', wide: true },
+    { key: 'ai', icon: 'nodes', wide: false },
+    { key: 'gaming', icon: 'gamepad', wide: false },
+    { key: 'scripts', icon: 'braces', wide: true },
+  ];
 
 /**
  * Custom monoline marks echoing the brand's angular knot —
