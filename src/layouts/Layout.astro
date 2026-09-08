@@ -60,7 +60,7 @@ const altUrl = localeUrl(
     <div class="aurora" data-aurora aria-hidden="true"></div>
     <a class="skip-link" href="#main">{t("nav.skip")}</a>
     <Header lang={lang} altUrl={altUrl} />
-    <main id="main">
+    <main id="main" tabindex="-1">
       <slot />
     </main>
     <Footer lang={lang} />

@@ -22,7 +22,7 @@ const posts = (await getCollection("blog"))
       <h2>{t("blog.title")}</h2>
       <p class="lead">{t("blog.lead")}</p>
     </div>
-    <div class="posts" data-stagger>
+    <div class="posts">
       {
         posts.map((post) => (
           <a class="post" href={localeUrl(lang, `blog/${post.id.split("/").pop()}`)}>

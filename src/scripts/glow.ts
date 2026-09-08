@@ -4,6 +4,8 @@
  * this only feeds --edge-proximity and --cursor-angle on pointermove.
  */
 export function initBorderGlow(): void {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-border-glow]'));
   if (cards.length === 0) return;
 

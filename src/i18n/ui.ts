@@ -19,6 +19,8 @@ const es = {
 
   // nav
   'nav.menu': 'Menú',
+  'nav.open': 'Abrir menú',
+  'nav.close': 'Cerrar menú',
   'nav.skip': 'Saltar al contenido',
   'nav.services': 'Servicios',
   'nav.about': 'Nosotros',
@@ -114,6 +116,7 @@ const es = {
   'footer.tagline': 'Software, IA y gaming a medida, hechos para durar.',
   'footer.contact': 'Contacto',
   'footer.social': 'Redes',
+  'footer.external': 'se abre en una pestaña nueva',
   'footer.legal': 'Legal',
   'footer.terms': 'Términos y Condiciones',
   'footer.blog': 'Blog',
@@ -165,6 +168,8 @@ const en: Record<DictKey, string> = {
 
   // nav
   'nav.menu': 'Menu',
+  'nav.open': 'Open menu',
+  'nav.close': 'Close menu',
   'nav.skip': 'Skip to content',
   'nav.services': 'Services',
   'nav.about': 'About us',
@@ -260,6 +265,7 @@ const en: Record<DictKey, string> = {
   'footer.tagline': 'Custom software, AI and gaming, built to last.',
   'footer.contact': 'Contact',
   'footer.social': 'Social',
+  'footer.external': 'opens in a new tab',
   'footer.legal': 'Legal',
   'footer.terms': 'Terms & Conditions',
   'footer.blog': 'Blog',

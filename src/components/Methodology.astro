@@ -18,21 +18,23 @@ const t = useTranslations(lang);
       <h2>{t("method.title")}</h2>
       <p class="lead">{t("method.lead")}</p>
     </div>
-    <ol class="steps" data-stagger>
+    <div class="steps-shell">
       <span class="rail" aria-hidden="true"></span>
       <span class="fill" data-line aria-hidden="true"></span>
-      {
-        methodSteps.map((step) => (
-          <li>
-            <span class="num">{step.num}</span>
-            <div>
-              <h3>{t(("method." + step.key + ".title") as DictKey)}</h3>
-              <p>{t(("method." + step.key + ".text") as DictKey)}</p>
-            </div>
-          </li>
-        ))
-      }
-    </ol>
+      <ol class="steps" data-stagger>
+        {
+          methodSteps.map((step) => (
+            <li>
+              <span class="num">{step.num}</span>
+              <div>
+                <h3>{t(("method." + step.key + ".title") as DictKey)}</h3>
+                <p>{t(("method." + step.key + ".text") as DictKey)}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -48,8 +50,11 @@ const t = useTranslations(lang);
     margin: 16px 0 14px;
   }
 
-  .steps {
+  .steps-shell {
     position: relative;
+  }
+
+  .steps {
     border-bottom: 1px solid var(--border);
   }
 

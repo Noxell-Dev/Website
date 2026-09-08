@@ -29,21 +29,26 @@ const t = useTranslations(lang);
       <p class="tagline">{t("footer.tagline")}</p>
     </div>
     <div>
-      <h4>{t("footer.contact")}</h4>
+      <h2>{t("footer.contact")}</h2>
       <a href={`mailto:${site.email}`}>{site.email}</a>
     </div>
     <div>
-      <h4>{t("footer.social")}</h4>
+      <h2>{t("footer.social")}</h2>
       {
         socials.map((social) => (
-          <a href={social.href} target="_blank" rel="noopener">
-            {social.label} ↗
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${social.label} — ${t("footer.external")}`}
+          >
+            {social.label} <span aria-hidden="true">↗</span>
           </a>
         ))
       }
     </div>
     <div>
-      <h4>{t("footer.legal")}</h4>
+      <h2>{t("footer.legal")}</h2>
       <a href={localeUrl(lang, "blog")}>{t("footer.blog")}</a>
       <a href={localeUrl(lang, "terms")}>{t("footer.terms")}</a>
     </div>
@@ -108,7 +113,7 @@ const t = useTranslations(lang);
     max-width: 22em;
   }
 
-  h4 {
+  h2 {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 500;

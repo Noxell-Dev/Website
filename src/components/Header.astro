@@ -26,7 +26,7 @@ const base = localeUrl(lang);
       >
       <span class="word">noxell<span class="dot">.dev</span></span>
     </a>
-    <nav aria-label={t("nav.menu")}>
+    <nav id="main-nav" aria-label={t("nav.menu")}>
       <a href={`${base}#servicios`}>{t("nav.services")}</a>
       <a href={`${base}#nosotros`}>{t("nav.about")}</a>
       <a href={localeUrl(lang, "blog")}>{t("nav.blog")}</a>
@@ -49,16 +49,60 @@ const base = localeUrl(lang);
         >
       </div>
       <a
-        class="btn-specular btn-specular--sm"
+        class="btn-specular btn-specular--sm header-cta"
         data-specular
         href={`${base}#contacto`}
       >
         <span class="spec-fx" aria-hidden="true"></span>
         <span class="btn-label">{t("nav.cta")}</span>
       </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label={t("nav.open")}
+        data-open-label={t("nav.open")}
+        data-close-label={t("nav.close")}
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 </header>
+
+<script>
+  const header = document.querySelector(".site-header");
+  const pill = header?.querySelector(".pill");
+  const toggle = header?.querySelector<HTMLButtonElement>(".menu-toggle");
+  const nav = header?.querySelector<HTMLElement>("#main-nav");
+
+  if (pill && toggle && nav) {
+    const openLabel = toggle.dataset.openLabel ?? "Open menu";
+    const closeLabel = toggle.dataset.closeLabel ?? "Close menu";
+
+    const closeMenu = () => {
+      pill.classList.remove("menu-open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", openLabel);
+    };
+
+    toggle.addEventListener("click", () => {
+      const isOpen = pill.classList.toggle("menu-open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? closeLabel : openLabel);
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
+    });
+  }
+</script>
 
 <style>
   .site-header {
@@ -143,6 +187,39 @@ const base = localeUrl(lang);
     gap: 10px;
   }
 
+  .menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--fg);
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 15px;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      transform var(--fast) var(--ease),
+      opacity var(--fast) var(--ease);
+  }
+
+  .pill.menu-open .menu-toggle span:first-child {
+    transform: translateY(3.25px) rotate(45deg);
+  }
+
+  .pill.menu-open .menu-toggle span:last-child {
+    transform: translateY(-3.25px) rotate(-45deg);
+  }
+
   /* iOS segmented language control */
   .lang {
     display: flex;
@@ -174,11 +251,47 @@ const base = localeUrl(lang);
   }
 
   @media (max-width: 720px) {
+    .pill {
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .header-cta { display: none; }
+
+    .menu-toggle { display: inline-flex; }
+
     nav {
       display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px;
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      background: rgba(15, 15, 21, 0.97);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.42);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
     }
-    .pill {
-      padding-left: 14px;
+
+    .pill.menu-open nav {
+      display: flex;
+    }
+
+    nav a {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 9px 14px;
+      border-radius: 12px;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
     }
   }
 </style>
