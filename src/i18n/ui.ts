@@ -81,7 +81,7 @@ const es = {
     'Notas sobre desarrollo web, inteligencia artificial, rendimiento y las decisiones que convierten una idea en un producto sólido.',
   'blog.read': 'Leer artículo',
   'blog.all': 'Ver todos los artículos',
-  'blog.back': '← Volver al blog',
+  'blog.back': '← Volver a la web',
 
   // methodology
   'method.overline': 'METODOLOGÍA',
@@ -227,7 +227,7 @@ const en: Record<DictKey, string> = {
     'Notes on web development, artificial intelligence, performance and the decisions that turn an idea into a solid product.',
   'blog.read': 'Read article',
   'blog.all': 'See all articles',
-  'blog.back': '← Back to the blog',
+  'blog.back': '← Back to the website',
 
   // methodology
   'method.overline': 'METHODOLOGY',
