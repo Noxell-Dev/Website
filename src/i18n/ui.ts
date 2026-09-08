@@ -11,6 +11,9 @@ const es = {
   'meta.home.title': 'noxell.dev — Desarrollo de software a medida',
   'meta.home.description':
     'Estudio de desarrollo de software e inteligencia artificial: web, SaaS, automatizaciones, chatbots y servidores de videojuegos. Soluciones a medida para empresas.',
+  'meta.blog.title': 'Blog — noxell.dev',
+  'meta.blog.description':
+    'Ideas y recursos sobre desarrollo web, inteligencia artificial, Astro, SEO y productos digitales.',
   'meta.terms.title': 'Términos y Condiciones — noxell.dev',
   'meta.terms.description': 'Términos y Condiciones de noxell.dev.',
 
@@ -19,6 +22,7 @@ const es = {
   'nav.skip': 'Saltar al contenido',
   'nav.services': 'Servicios',
   'nav.about': 'Nosotros',
+  'nav.blog': 'Blog',
   'nav.method': 'Metodología',
   'nav.contact': 'Contacto',
   'nav.cta': 'Hablemos',
@@ -70,15 +74,14 @@ const es = {
   'about.fact2': 'Entregas en partes útiles, no en big bang',
   'about.fact3': 'Documentación incluida de serie',
 
-  // community
-  'community.overline': 'COMUNIDAD',
-  'community.title': 'Un entorno de trabajo serio y seguro.',
-  'community.lead':
-    'Aplicamos un código de conducta estricto y gestionamos todo el soporte de forma estructurada, para que cada cliente reciba atención rápida y personalizada.',
-  'community.rule1': 'Respeto mutuo: código de conducta estricto',
-  'community.rule2': 'Cero spam, publicidad no autorizada ni contenido NSFW',
-  'community.rule3': 'Confidencialidad total sobre la información y proyectos de nuestros clientes',
-  'community.rule4': 'Soporte y consultas gestionados por nuestro sistema de tickets oficial',
+  // blog
+  'blog.overline': 'BLOG',
+  'blog.title': 'Ideas para construir mejor.',
+  'blog.lead':
+    'Notas sobre desarrollo web, inteligencia artificial, rendimiento y las decisiones que convierten una idea en un producto sólido.',
+  'blog.read': 'Leer artículo',
+  'blog.all': 'Ver todos los artículos',
+  'blog.back': '← Volver al blog',
 
   // methodology
   'method.overline': 'METODOLOGÍA',
@@ -113,7 +116,7 @@ const es = {
   'footer.social': 'Redes',
   'footer.legal': 'Legal',
   'footer.terms': 'Términos y Condiciones',
-  'footer.rules': 'Normas de la comunidad',
+  'footer.blog': 'Blog',
   'footer.rights': '© 2026 noxell.dev — Todos los derechos reservados.',
 
   // terms page
@@ -154,6 +157,9 @@ const en: Record<DictKey, string> = {
   'meta.home.title': 'noxell.dev — Custom software development',
   'meta.home.description':
     'A software and AI development studio: web, SaaS, automations, chatbots and game servers. Custom solutions for companies.',
+  'meta.blog.title': 'Blog — noxell.dev',
+  'meta.blog.description':
+    'Ideas and resources about web development, artificial intelligence, Astro, SEO and digital products.',
   'meta.terms.title': 'Terms & Conditions — noxell.dev',
   'meta.terms.description': 'Terms & Conditions of noxell.dev.',
 
@@ -162,6 +168,7 @@ const en: Record<DictKey, string> = {
   'nav.skip': 'Skip to content',
   'nav.services': 'Services',
   'nav.about': 'About us',
+  'nav.blog': 'Blog',
   'nav.method': 'Methodology',
   'nav.contact': 'Contact',
   'nav.cta': "Let's talk",
@@ -213,15 +220,14 @@ const en: Record<DictKey, string> = {
   'about.fact2': 'Shipped in useful pieces, no big bang',
   'about.fact3': 'Documentation included by default',
 
-  // community
-  'community.overline': 'COMMUNITY',
-  'community.title': 'A serious, safe place to work.',
-  'community.lead':
-    'We enforce a strict code of conduct and handle all support in a structured way, so every client gets fast, personal attention.',
-  'community.rule1': 'Mutual respect: strict code of conduct',
-  'community.rule2': 'No spam, unauthorized advertising or NSFW content',
-  'community.rule3': 'Full confidentiality over our clients\u2019 information and projects',
-  'community.rule4': 'Support and enquiries handled through our official ticket system',
+  // blog
+  'blog.overline': 'BLOG',
+  'blog.title': 'Ideas for building better.',
+  'blog.lead':
+    'Notes on web development, artificial intelligence, performance and the decisions that turn an idea into a solid product.',
+  'blog.read': 'Read article',
+  'blog.all': 'See all articles',
+  'blog.back': '← Back to the blog',
 
   // methodology
   'method.overline': 'METHODOLOGY',
@@ -256,7 +262,7 @@ const en: Record<DictKey, string> = {
   'footer.social': 'Social',
   'footer.legal': 'Legal',
   'footer.terms': 'Terms & Conditions',
-  'footer.rules': 'Community rules',
+  'footer.blog': 'Blog',
   'footer.rights': '© 2026 noxell.dev — All rights reserved.',
 
   // terms page

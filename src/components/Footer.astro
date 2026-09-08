@@ -9,7 +9,6 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const base = localeUrl(lang);
 ---
 
 <footer class="site-footer">
@@ -45,7 +44,7 @@ const base = localeUrl(lang);
     </div>
     <div>
       <h4>{t("footer.legal")}</h4>
-      <a href={`${base}#normas`}>{t("footer.rules")}</a>
+      <a href={localeUrl(lang, "blog")}>{t("footer.blog")}</a>
       <a href={localeUrl(lang, "terms")}>{t("footer.terms")}</a>
     </div>
   </div>

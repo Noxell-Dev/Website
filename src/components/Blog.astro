@@ -1,0 +1,110 @@
+---
+import { getCollection } from "astro:content";
+import type { Lang } from "@i18n/ui";
+import { localeUrl, useTranslations } from "@i18n/utils";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const posts = (await getCollection("blog"))
+  .filter((post) => post.data.locale === lang && !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<section class="section blog" id="blog">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="overline-pill">{t("blog.overline")}</span>
+      <h2>{t("blog.title")}</h2>
+      <p class="lead">{t("blog.lead")}</p>
+    </div>
+    <div class="posts" data-stagger>
+      {
+        posts.map((post) => (
+          <a class="post" href={localeUrl(lang, `blog/${post.id.split("/").pop()}`)}>
+            <div class="post-meta">
+              <time datetime={post.data.date.toISOString()}>
+                {post.data.date.toLocaleDateString(lang === "es" ? "es-ES" : "en-US", {
+                  dateStyle: "medium",
+                })}
+              </time>
+              <span>{post.data.tags[0]}</span>
+            </div>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <span class="read">{t("blog.read")} →</span>
+          </a>
+        ))
+      }
+    </div>
+    <a class="all-link" href={localeUrl(lang, "blog")}>{t("blog.all")} →</a>
+  </div>
+</section>
+
+<style>
+  .blog {
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .sec-head { margin-bottom: 52px; }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    margin: 16px 0 14px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color var(--fast) var(--ease), transform var(--fast) var(--ease);
+  }
+
+  .post:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-3px);
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.15;
+    margin: 28px 0 12px;
+  }
+
+  .post p { color: var(--muted); font-size: 0.94rem; }
+  .read { margin-top: auto; padding-top: 24px; color: var(--red-text); font-weight: 600; }
+  .all-link { display: inline-block; margin-top: 32px; font-weight: 600; }
+  .all-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+  @media (max-width: 880px) {
+    .posts { grid-template-columns: 1fr; }
+    .post { min-height: 0; }
+  }
+</style>

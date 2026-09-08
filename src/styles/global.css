@@ -175,6 +175,15 @@ svg { display: block; }
   height: 100%;
 }
 
+.blog-page .aurora {
+  z-index: 0;
+}
+
+.blog-page > :not(.aurora) {
+  position: relative;
+  z-index: 1;
+}
+
 /* ---------- border glow (React Bits BorderGlow, vanilla port) ----------
    Pointer-driven edge light + mesh gradient border in brand colors.
    scripts/glow.ts feeds --edge-proximity and --cursor-angle. */

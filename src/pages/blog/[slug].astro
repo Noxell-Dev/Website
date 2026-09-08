@@ -1,0 +1,60 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import CtaBand from "@components/CtaBand.astro";
+import { localeUrl, useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts
+    .filter((post) => post.data.locale === "es" && !post.data.draft)
+    .map((post) => ({
+      params: { slug: post.id.split("/").pop() },
+      props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const lang: Lang = "es";
+const t = useTranslations(lang);
+const { Content } = await render(post);
+---
+
+<Layout lang={lang} path={`blog/${post.id.split("/").pop()}`} title={`${post.data.title} — noxell.dev`} description={post.data.description}>
+  <article class="article">
+    <a class="back" href={localeUrl(lang, "blog")}>{t("blog.back")}</a>
+    <header>
+      <span class="overline-pill">{post.data.tags.join(" · ")}</span>
+      <h1>{post.data.title}</h1>
+      <p class="description">{post.data.description}</p>
+      <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString("es-ES", { dateStyle: "long" })}</time>
+    </header>
+    <div class="content"><Content /></div>
+  </article>
+  <CtaBand lang={lang} />
+  <script type="application/ld+json" is:inline set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.date.toISOString(),
+    inLanguage: lang,
+    author: { "@type": "Organization", name: "noxell.dev" },
+    publisher: { "@type": "Organization", name: "noxell.dev" },
+  })} />
+</Layout>
+
+<style>
+  .article { max-width: 780px; margin-inline: auto; padding: 80px 24px 120px; }
+  .back { display: inline-block; margin-bottom: 64px; color: var(--muted); font-family: var(--font-mono); font-size: 0.8rem; }
+  .back:hover { color: var(--fg); }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 42px; }
+  h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.03; letter-spacing: -0.05em; margin: 20px 0; }
+  .description { font-size: 1.18rem; color: var(--muted); }
+  time { display: block; margin-top: 24px; color: var(--muted); font-family: var(--font-mono); font-size: 0.75rem; }
+  .content { padding-top: 48px; font-size: 1.08rem; }
+  .content :global(h2) { font-size: 1.55rem; margin: 42px 0 12px; }
+  .content :global(p) { color: var(--muted); margin: 0 0 18px; }
+  .content :global(a) { color: var(--blue-text); text-decoration: underline; text-underline-offset: 4px; }
+</style>

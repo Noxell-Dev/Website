@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Layout.astro";
+import BlogListing from "@components/BlogListing.astro";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+
+const lang: Lang = "en";
+const t = useTranslations(lang);
+---
+
+<Layout
+  lang={lang}
+  path="blog"
+  title={t("meta.blog.title")}
+  description={t("meta.blog.description")}
+>
+  <BlogListing lang={lang} />
+</Layout>

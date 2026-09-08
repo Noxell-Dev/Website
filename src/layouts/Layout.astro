@@ -19,6 +19,7 @@ interface Props {
 
 const { lang, title, description, path = "" } = Astro.props;
 const t = useTranslations(lang);
+const isBlogPage = path === "blog" || path.startsWith("blog/");
 
 const siteUrl = Astro.site ?? new URL("https://noxell.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
@@ -55,7 +56,7 @@ const altUrl = localeUrl(
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
   </head>
-  <body>
+  <body class:list={{ "blog-page": isBlogPage }}>
     <div class="aurora" data-aurora aria-hidden="true"></div>
     <a class="skip-link" href="#main">{t("nav.skip")}</a>
     <Header lang={lang} altUrl={altUrl} />
