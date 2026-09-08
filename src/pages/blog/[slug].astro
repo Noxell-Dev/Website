@@ -21,7 +21,7 @@ const t = useTranslations(lang);
 const { Content } = await render(post);
 ---
 
-<Layout lang={lang} path={`blog/${post.id.split("/").pop()}`} title={`${post.data.title} — noxell.dev`} description={post.data.description}>
+<Layout lang={lang} esPath={`blog/${post.id.split("/").pop()}`} enPath={`blog/${post.id.split("/").pop()}`} title={`${post.data.title} — noxell.dev`} description={post.data.description}>
   <article class="article">
     <a class="back" href={localeUrl(lang, "blog")}>{t("blog.back")}</a>
     <header>

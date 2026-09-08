@@ -13,23 +13,24 @@ interface Props {
   lang: Lang;
   title: string;
   description: string;
-  /** Page path without locale prefix: '' for home, 'terms' for terms. */
-  path?: string;
+  /** Slug of the page in each locale, without slashes ('' for the locale root).
+   *  Slugs may differ per language (e.g. terminos / terms). */
+  esPath?: string;
+  enPath?: string;
 }
 
-const { lang, title, description, path = "" } = Astro.props;
+const { lang, title, description, esPath = "", enPath = "" } = Astro.props;
 const t = useTranslations(lang);
-const isBlogPage = path === "blog" || path.startsWith("blog/");
+const isBlogPage = esPath.startsWith("blog") || enPath.startsWith("blog");
 
 const siteUrl = Astro.site ?? new URL("https://noxell.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
 const ogImage = new URL("/logorojo.png", siteUrl);
+const pathFor = (locale: Lang) => (locale === defaultLang ? esPath : enPath);
 const urlFor = (locale: Lang) =>
-  new URL(localeUrl(locale, path || undefined), siteUrl);
-const altUrl = localeUrl(
-  lang === defaultLang ? "en" : defaultLang,
-  path || undefined,
-);
+  new URL(localeUrl(locale, pathFor(locale) || undefined), siteUrl);
+const altLocale: Lang = lang === defaultLang ? "en" : defaultLang;
+const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
 ---
 
 <!doctype html>

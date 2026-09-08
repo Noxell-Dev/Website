@@ -1,6 +1,6 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import { useTranslations } from '@i18n/utils';
+import LegalPage from '@components/LegalPage.astro';
+import { localizedUrl, useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
 
 const lang: Lang = 'es';
@@ -12,66 +12,26 @@ const sections = [
   ['terms.s4h', 'terms.s4'],
   ['terms.s5h', 'terms.s5'],
   ['terms.s6h', 'terms.s6'],
+  ['terms.s7h', 'terms.s7'],
+  ['terms.s8h', 'terms.s8'],
+  ['terms.s9h', 'terms.s9'],
+  ['terms.s10h', 'terms.s10'],
+  ['terms.s11h', 'terms.s11'],
+  ['terms.s12h', 'terms.s12'],
 ] as const;
 ---
 
-<Layout
+<LegalPage
   lang={lang}
-  path="terms"
+  esPath="terminos"
+  enPath="terms"
   title={t('meta.terms.title')}
   description={t('meta.terms.description')}
->
-  <article class="legal">
-    <h1>{t('terms.h1')}</h1>
-    <p class="updated">{t('terms.updated')}</p>
-    {
-      sections.map(([heading, body]) => (
-        <>
-          <h2>{t(heading)}</h2>
-          <p>{t(body)}</p>
-        </>
-      ))
-    }
-    <a class="back" href="/">{t('terms.back')}</a>
-  </article>
-</Layout>
-
-<style>
-  .legal {
-    max-width: 760px;
-    margin-inline: auto;
-    padding: 80px 24px 120px;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 3.5vw, 2.6rem);
-    letter-spacing: -0.03em;
-    margin-bottom: 10px;
-  }
-
-  .updated {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-bottom: 44px;
-  }
-
-  h2 {
-    font-family: var(--font-sans);
-    font-size: 1.12rem;
-    font-weight: 600;
-    margin: 36px 0 8px;
-  }
-
-  p:not(.updated) { color: var(--muted); }
-
-  .back {
-    display: inline-block;
-    margin-top: 48px;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--blue-text);
-  }
-
-  .back:hover { text-decoration: underline; text-underline-offset: 4px; }
-</style>
+  h1Key="terms.h1"
+  updatedKey="terms.updated"
+  sections={sections}
+  backHref="/"
+  backKey="terms.back"
+  crossKey="terms.cross"
+  crossHref={localizedUrl(lang, 'privacy')}
+/>

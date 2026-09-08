@@ -1,0 +1,35 @@
+---
+import LegalPage from '@components/LegalPage.astro';
+import { localizedUrl, useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+
+const lang: Lang = 'es';
+const t = useTranslations(lang);
+const sections = [
+  ['privacy.s1h', 'privacy.s1'],
+  ['privacy.s2h', 'privacy.s2'],
+  ['privacy.s3h', 'privacy.s3'],
+  ['privacy.s4h', 'privacy.s4'],
+  ['privacy.s5h', 'privacy.s5'],
+  ['privacy.s6h', 'privacy.s6'],
+  ['privacy.s7h', 'privacy.s7'],
+  ['privacy.s8h', 'privacy.s8'],
+  ['privacy.s9h', 'privacy.s9'],
+  ['privacy.s10h', 'privacy.s10'],
+] as const;
+---
+
+<LegalPage
+  lang={lang}
+  esPath="privacidad"
+  enPath="privacy"
+  title={t('meta.privacy.title')}
+  description={t('meta.privacy.description')}
+  h1Key="privacy.h1"
+  updatedKey="privacy.updated"
+  sections={sections}
+  backHref="/"
+  backKey="privacy.back"
+  crossKey="privacy.cross"
+  crossHref={localizedUrl(lang, 'terms')}
+/>
