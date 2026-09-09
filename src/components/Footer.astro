@@ -1,7 +1,7 @@
 ---
 import { site, socials } from "@data/site";
 import type { Lang } from "@i18n/ui";
-import { localeUrl, localizedUrl, useTranslations } from "@i18n/utils";
+import { localizedUrl, useTranslations } from "@i18n/utils";
 
 interface Props {
   lang: Lang;
@@ -49,7 +49,6 @@ const t = useTranslations(lang);
     </div>
     <div>
       <h2>{t("footer.legal")}</h2>
-      <a href={localeUrl(lang, "blog")}>{t("footer.blog")}</a>
       <a href={localizedUrl(lang, "terms")}>{t("footer.terms")}</a>
       <a href={localizedUrl(lang, "privacy")}>{t("footer.privacy")}</a>
     </div>

@@ -123,7 +123,9 @@ void main() {
 `;
 
 const SPEED = 0.4;
-const STOPS = ['#1800ad', '#8b0056', '#ff0000'];
+// Brand aurora: corporate blue on the left, corporate red on the right,
+// near-black in the middle so the two hues never mix into purple.
+const STOPS = ['#1800ad', '#101014', '#ff0000'];
 
 export function initAurora(): void {
   const ctn = document.querySelector<HTMLElement>('[data-aurora]');

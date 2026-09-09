@@ -4,6 +4,7 @@ import "@fontsource-variable/inter";
 import "@fontsource-variable/jetbrains-mono";
 import "@styles/global.css";
 import "@styles/specular.css";
+import "@styles/accordion.css";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import { localeUrl, useTranslations } from "@i18n/utils";
@@ -66,6 +67,7 @@ const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
     </main>
     <Footer lang={lang} />
     <script>
+      import "../scripts/accordion";
       import "../scripts/aurora";
       import "../scripts/glow";
       import "../scripts/motion";

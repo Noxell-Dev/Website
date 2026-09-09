@@ -1,0 +1,70 @@
+---
+import { useTranslations, type DictKey } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { portfolioItems } from '@data/site';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="overline-pill">{t('portfolio.overline')}</span>
+      <h2>{t('portfolio.title')}</h2>
+      <p class="lead">{t('portfolio.lead')}</p>
+    </div>
+    <div
+      class="accordion-gallery"
+      data-accordion
+      data-default-index="1"
+      role="list"
+      aria-label={t('portfolio.title')}
+    >
+      {
+        portfolioItems.map((item) => (
+          <a
+            class="ag-panel"
+            href={item.link}
+            role="listitem"
+            tabindex="0"
+            aria-label={t(item.labelKey as DictKey)}
+          >
+            <span class="ag-panel__frame">
+              <span class="ag-panel__media">
+                <img
+                  src={item.image}
+                  alt={t(item.labelKey as DictKey)}
+                  loading="lazy"
+                  draggable="false"
+                />
+              </span>
+              <span class="ag-panel__overlay" aria-hidden="true" />
+            </span>
+            <span class="ag-panel__label" aria-hidden="true">
+              <span class="ag-panel__bar" />
+              <span class="ag-panel__text">{t(item.labelKey as DictKey)}</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .sec-head {
+    margin-bottom: 52px;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+    margin: 16px 0 14px;
+  }
+</style>

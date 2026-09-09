@@ -26,7 +26,7 @@ const es = {
   'nav.close': 'Cerrar menú',
   'nav.skip': 'Saltar al contenido',
   'nav.services': 'Servicios',
-  'nav.about': 'Nosotros',
+  'nav.portfolio': 'Portfolio',
   'nav.blog': 'Blog',
   'nav.method': 'Metodología',
   'nav.contact': 'Contacto',
@@ -67,17 +67,15 @@ const es = {
   'services.scripts.text':
     'Scripts y mecánicas programadas a medida para adaptarnos a las necesidades exactas de tu proyecto.',
 
-  // about
-  'about.overline': 'NOSOTROS',
-  'about.title': 'Trato directo con quien escribe tu código.',
-  'about.p1':
-    'En noxell.dev combinamos nuestra experiencia en desarrollo de software avanzado e inteligencia artificial para ofrecer soluciones tecnológicas reales, tanto en el entorno empresarial corporativo como en los videojuegos.',
-  'about.p2':
-    'Huímos de las soluciones genéricas: analizamos, diseñamos y construimos a medida, desde plataformas SaaS completas hasta servidores dedicados, con el foco puesto en la rentabilidad y los resultados de nuestros clientes.',
-  'about.aside': 'POR QUÉ NOXELL',
-  'about.fact1': 'El código y su propiedad: 100% tuya',
-  'about.fact2': 'Entregas en partes útiles, no en big bang',
-  'about.fact3': 'Documentación incluida de serie',
+  // portfolio
+  'portfolio.overline': 'PORTFOLIO',
+  'portfolio.title': 'Proyectos que hablan por nosotros.',
+  'portfolio.lead':
+    'Una muestra de lo que construimos: plataformas, inteligencia artificial, servidores y scripts hechos a medida.',
+  'portfolio.item1': 'SaaS corporativo',
+  'portfolio.item2': 'Chatbot con IA',
+  'portfolio.item3': 'Servidor FiveM',
+  'portfolio.item4': 'Web a medida',
 
   // blog
   'blog.overline': 'BLOG',
@@ -123,7 +121,6 @@ const es = {
   'footer.legal': 'Legal',
   'footer.terms': 'Términos y Condiciones',
   'footer.privacy': 'Política de Privacidad',
-  'footer.blog': 'Blog',
   'footer.rights': '© 2026 noxell.dev — Todos los derechos reservados.',
 
   // terms page
@@ -234,7 +231,7 @@ const en: Record<DictKey, string> = {
   'nav.close': 'Close menu',
   'nav.skip': 'Skip to content',
   'nav.services': 'Services',
-  'nav.about': 'About us',
+  'nav.portfolio': 'Portfolio',
   'nav.blog': 'Blog',
   'nav.method': 'Methodology',
   'nav.contact': 'Contact',
@@ -275,17 +272,15 @@ const en: Record<DictKey, string> = {
   'services.scripts.text':
     'Custom-coded scripts and mechanics adapted to the exact needs of your project.',
 
-  // about
-  'about.overline': 'ABOUT US',
-  'about.title': 'You talk directly to the people who write your code.',
-  'about.p1':
-    'At noxell.dev we combine our experience in advanced software development and artificial intelligence to deliver real technology, both in the corporate world and in video games.',
-  'about.p2':
-    'We stay away from generic solutions: we analyze, design and build to measure, from full SaaS platforms to dedicated servers, focused on our clients\u2019 profitability and results.',
-  'about.aside': 'WHY NOXELL',
-  'about.fact1': 'Code and its ownership: 100% yours',
-  'about.fact2': 'Shipped in useful pieces, no big bang',
-  'about.fact3': 'Documentation included by default',
+  // portfolio
+  'portfolio.overline': 'PORTFOLIO',
+  'portfolio.title': 'Work that speaks for itself.',
+  'portfolio.lead':
+    'A sample of what we build: platforms, artificial intelligence, servers and custom-made scripts.',
+  'portfolio.item1': 'Corporate SaaS',
+  'portfolio.item2': 'AI chatbot',
+  'portfolio.item3': 'FiveM server',
+  'portfolio.item4': 'Custom website',
 
   // blog
   'blog.overline': 'BLOG',
@@ -331,7 +326,6 @@ const en: Record<DictKey, string> = {
   'footer.legal': 'Legal',
   'footer.terms': 'Terms & Conditions',
   'footer.privacy': 'Privacy Policy',
-  'footer.blog': 'Blog',
   'footer.rights': '© 2026 noxell.dev — All rights reserved.',
 
   // terms page

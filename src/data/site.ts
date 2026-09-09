@@ -52,3 +52,19 @@ export const methodSteps: readonly { key: string; num: string }[] = [
   { key: 'step6', num: '06' },
   { key: 'step7', num: '07' },
 ];
+
+/**
+ * Portfolio accordion panels. Labels are dict keys (translated per locale
+ * at build time); swap `image` for real case-study shots and `link` for
+ * the project URL when available.
+ */
+export const portfolioItems: readonly {
+  image: string;
+  link: string;
+  labelKey: string;
+}[] = [
+  { image: '/portfolio/saas.svg', link: '#', labelKey: 'portfolio.item1' },
+  { image: '/portfolio/chatbot-ia.svg', link: '#', labelKey: 'portfolio.item2' },
+  { image: '/portfolio/servidor-fivem.svg', link: '#', labelKey: 'portfolio.item3' },
+  { image: '/portfolio/web-medida.svg', link: '#', labelKey: 'portfolio.item4' },
+];
