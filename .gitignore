@@ -1,13 +1,18 @@
-# build output
-dist/
-# generated types
-.astro/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
-node_modules/
-# environment variables
+/node_modules
+
+# astro
+dist/
+.astro/
+
+# env files
 .env
 .env.production
-# macOS-specific files
+
+# misc
 .DS_Store
-# jetbrains setting folder
+
+# ide
 .idea/
