@@ -9,6 +9,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import { localeUrl, useTranslations } from "@i18n/utils";
 import { defaultLang, type Lang } from "@i18n/ui";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   lang: Lang;
@@ -59,6 +60,7 @@ const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={ogImage} />
+    <Analytics />
   </head>
   <body class:list={{ "blog-page": isBlogPage }}>
     <div class="bg-mesh" aria-hidden="true"></div>
