@@ -160,26 +160,27 @@ svg { display: block; }
 .section { padding-block: 108px; }
 .section-breathe { padding-block: 132px; }
 
-/* ---------- aurora background (React Bits Aurora, vanilla port) ---------- */
+/* ---------- mesh background (CSS graphite mesh + faint red glow) ---------- */
 
-.aurora {
+.bg-mesh {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
+  background:
+    radial-gradient(110% 70% at 50% 120%, rgba(220, 18, 18, 0.18) 0%, transparent 60%),
+    radial-gradient(55% 42% at 10% 6%, #242220 0%, transparent 70%),
+    radial-gradient(50% 38% at 90% 10%, #1f1e22 0%, transparent 70%),
+    radial-gradient(75% 60% at 50% 52%, #151417 0%, transparent 78%),
+    radial-gradient(42% 32% at 88% 88%, #1d1b19 0%, transparent 70%),
+    #0a0a0c;
 }
 
-.aurora canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.blog-page .aurora {
+.blog-page .bg-mesh {
   z-index: 0;
 }
 
-.blog-page > :not(.aurora) {
+.blog-page > :not(.bg-mesh) {
   position: relative;
   z-index: 1;
 }
@@ -229,12 +230,12 @@ svg { display: block; }
   background:
     linear-gradient(var(--surface) 0 100%) padding-box,
     linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
-    radial-gradient(at 80% 55%, #4d4fe0 0px, transparent 50%) border-box,
+    radial-gradient(at 80% 55%, #b9b9c4 0px, transparent 50%) border-box,
     radial-gradient(at 69% 34%, #f60f0f 0px, transparent 50%) border-box,
-    radial-gradient(at 8% 6%, #a8aaff 0px, transparent 50%) border-box,
-    radial-gradient(at 41% 38%, #4d4fe0 0px, transparent 50%) border-box,
+    radial-gradient(at 8% 6%, #ececf2 0px, transparent 50%) border-box,
+    radial-gradient(at 41% 38%, #b9b9c4 0px, transparent 50%) border-box,
     radial-gradient(at 86% 85%, #f60f0f 0px, transparent 50%) border-box,
-    radial-gradient(at 82% 18%, #a8aaff 0px, transparent 50%) border-box,
+    radial-gradient(at 82% 18%, #ececf2 0px, transparent 50%) border-box,
     radial-gradient(at 51% 4%, #f60f0f 0px, transparent 50%) border-box;
   opacity: calc((var(--edge-proximity) - var(--color-sensitivity)) / (100 - var(--color-sensitivity)));
   mask-image: conic-gradient(
@@ -250,12 +251,12 @@ svg { display: block; }
 .border-glow-card::after {
   border: 1px solid transparent;
   background:
-    radial-gradient(at 80% 55%, #4d4fe0 0px, transparent 50%) padding-box,
+    radial-gradient(at 80% 55%, #b9b9c4 0px, transparent 50%) padding-box,
     radial-gradient(at 69% 34%, #f60f0f 0px, transparent 50%) padding-box,
-    radial-gradient(at 8% 6%, #a8aaff 0px, transparent 50%) padding-box,
-    radial-gradient(at 41% 38%, #4d4fe0 0px, transparent 50%) padding-box,
+    radial-gradient(at 8% 6%, #ececf2 0px, transparent 50%) padding-box,
+    radial-gradient(at 41% 38%, #b9b9c4 0px, transparent 50%) padding-box,
     radial-gradient(at 86% 85%, #f60f0f 0px, transparent 50%) padding-box,
-    radial-gradient(at 82% 18%, #a8aaff 0px, transparent 50%) padding-box,
+    radial-gradient(at 82% 18%, #ececf2 0px, transparent 50%) padding-box,
     radial-gradient(at 51% 4%, #f60f0f 0px, transparent 50%) padding-box;
   mask-image:
     linear-gradient(to bottom, black, black),
@@ -292,19 +293,19 @@ svg { display: block; }
   inset: var(--glow-padding);
   border-radius: inherit;
   box-shadow:
-    inset 0 0 0 1px hsl(239 100% 72% / 100%),
-    inset 0 0 1px 0 hsl(239 100% 72% / 60%),
-    inset 0 0 3px 0 hsl(239 100% 72% / 50%),
-    inset 0 0 6px 0 hsl(239 100% 72% / 40%),
-    inset 0 0 15px 0 hsl(239 100% 72% / 30%),
-    inset 0 0 25px 2px hsl(239 100% 72% / 20%),
-    inset 0 0 50px 2px hsl(239 100% 72% / 10%),
-    0 0 1px 0 hsl(239 100% 72% / 60%),
-    0 0 3px 0 hsl(239 100% 72% / 50%),
-    0 0 6px 0 hsl(239 100% 72% / 40%),
-    0 0 15px 0 hsl(239 100% 72% / 30%),
-    0 0 25px 2px hsl(239 100% 72% / 20%),
-    0 0 50px 2px hsl(239 100% 72% / 10%);
+    inset 0 0 0 1px hsl(0 0% 90% / 100%),
+    inset 0 0 1px 0 hsl(0 0% 90% / 60%),
+    inset 0 0 3px 0 hsl(0 0% 90% / 50%),
+    inset 0 0 6px 0 hsl(0 0% 90% / 40%),
+    inset 0 0 15px 0 hsl(0 0% 90% / 30%),
+    inset 0 0 25px 2px hsl(0 0% 90% / 20%),
+    inset 0 0 50px 2px hsl(0 0% 90% / 10%),
+    0 0 1px 0 hsl(0 0% 90% / 60%),
+    0 0 3px 0 hsl(0 0% 90% / 50%),
+    0 0 6px 0 hsl(0 0% 90% / 40%),
+    0 0 15px 0 hsl(0 0% 90% / 30%),
+    0 0 25px 2px hsl(0 0% 90% / 20%),
+    0 0 50px 2px hsl(0 0% 90% / 10%);
 }
 
 .border-glow-inner {

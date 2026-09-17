@@ -61,7 +61,7 @@ const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
     <meta name="twitter:image" content={ogImage} />
   </head>
   <body class:list={{ "blog-page": isBlogPage }}>
-    <div class="aurora" data-aurora aria-hidden="true"></div>
+    <div class="bg-mesh" aria-hidden="true"></div>
     <a class="skip-link" href="#main">{t("nav.skip")}</a>
     <Header lang={lang} altUrl={altUrl} />
     <main id="main" tabindex="-1">
@@ -70,7 +70,6 @@ const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
     <Footer lang={lang} />
     <script>
       import "../scripts/accordion";
-      import "../scripts/aurora";
       import "../scripts/glow";
       import "../scripts/motion";
       import "../scripts/specular";
