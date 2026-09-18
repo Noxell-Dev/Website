@@ -63,8 +63,8 @@ export const portfolioItems: readonly {
   link: string;
   labelKey: string;
 }[] = [
-  { image: '/portfolio/saas.svg', link: '#', labelKey: 'portfolio.item1' },
-  { image: '/portfolio/chatbot-ia.svg', link: '#', labelKey: 'portfolio.item2' },
-  { image: '/portfolio/servidor-fivem.svg', link: '#', labelKey: 'portfolio.item3' },
-  { image: '/portfolio/web-medida.svg', link: '#', labelKey: 'portfolio.item4' },
+  { image: '/images/portfolio/saas.svg', link: '#', labelKey: 'portfolio.item1' },
+  { image: '/images/portfolio/chatbot-ia.svg', link: '#', labelKey: 'portfolio.item2' },
+  { image: '/images/portfolio/servidor-fivem.svg', link: '#', labelKey: 'portfolio.item3' },
+  { image: '/images/portfolio/web-medida.svg', link: '#', labelKey: 'portfolio.item4' },
 ];

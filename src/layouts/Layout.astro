@@ -27,7 +27,7 @@ const isBlogPage = esPath.startsWith("blog") || enPath.startsWith("blog");
 
 const siteUrl = Astro.site ?? new URL("https://noxell.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const ogImage = new URL("/logorojo.png", siteUrl);
+const ogImage = new URL("/images/logorojo.png", siteUrl);
 const pathFor = (locale: Lang) => (locale === defaultLang ? esPath : enPath);
 const urlFor = (locale: Lang) =>
   new URL(localeUrl(locale, pathFor(locale) || undefined), siteUrl);

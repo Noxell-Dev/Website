@@ -13,11 +13,11 @@ estático.
   los componentes, usa las utilidades de `src/i18n/`.
 - Componentes en `src/components/`, páginas en `src/pages/`, JS de cliente
   en `src/scripts/`, estilos en `src/styles/`, datos en `src/data/`.
-- Logos y favicons en `public/`: `logorojo.png` es el logo principal; los
-  favicons (`favicon.svg`, `favicon.ico`, `favicon-96x96.png`,
-  `apple-touch-icon.png`) ya están enlazados en `src/layouts/Layout.astro`.
-  Si cambias el logo, actualiza ambos repos de noxell.dev (Website y
-  Dashboard) para mantener la identidad común.
+- Imágenes en `public/images/` (`logorojo.png` es el logo principal,
+  ilustraciones en `public/images/portfolio/`); favicons y manifiestos en la
+  raíz de `public/`. Los favicons ya están enlazados en
+  `src/layouts/Layout.astro`. Si cambias el logo, actualiza ambos repos de
+  noxell.dev (Website y Dashboard) para mantener la identidad común.
 - Hay skills del proyecto en `.agents/skills/` (astro-framework, seo,
   accessibility, best-practices…): consúltalas antes de tocar esas áreas.
 - `npm run check` antes de dar por terminado un cambio que toque
