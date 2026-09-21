@@ -27,14 +27,14 @@ const isBlogPage = esPath.startsWith("blog") || enPath.startsWith("blog");
 
 const siteUrl = Astro.site ?? new URL("https://noxell.dev");
 const canonical = new URL(Astro.url.pathname, siteUrl);
-const ogImage = new URL("/images/logorojo.png", siteUrl);
+const ogImage = new URL("/images/og-image.jpg", siteUrl);
 const pathFor = (locale: Lang) => (locale === defaultLang ? esPath : enPath);
 const urlFor = (locale: Lang) =>
   new URL(localeUrl(locale, pathFor(locale) || undefined), siteUrl);
 const altLocale: Lang = lang === defaultLang ? "en" : defaultLang;
 const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
 const ogLocale = lang === "es" ? "es_ES" : "en_US";
-const ogImageAlt = "Logo de noxell.dev";
+const ogImageAlt = "noxell.dev — estudio de software e inteligencia artificial";
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
@@ -84,6 +84,8 @@ const websiteJsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter Card -->
