@@ -10,7 +10,7 @@ const es = {
   // meta
   'meta.home.title': 'noxell.dev — Desarrollo de software a medida',
   'meta.home.description':
-    'Estudio de desarrollo de software e inteligencia artificial: web, SaaS, automatizaciones, chatbots y servidores de videojuegos. Soluciones a medida para empresas.',
+    'Estudio de desarrollo de software. Soluciones a medida para empresas.',
   'meta.blog.title': 'Blog — noxell.dev',
   'meta.blog.description':
     'Ideas y recursos sobre desarrollo web, inteligencia artificial, Astro, SEO y productos digitales.',
@@ -31,10 +31,10 @@ const es = {
   'lang.switch': 'Cambiar de idioma',
 
   // hero
-  'hero.overline': 'DESARROLLO · IA · GAMING',
+  'hero.overline': 'ESTUDIO DE DESARROLLO DE SOFTWARE',
   'hero.title': 'Software a medida para ideas que no caben en una plantilla.',
   'hero.lead':
-    'Combinamos desarrollo avanzado e inteligencia artificial para crear soluciones tecnológicas reales: del SaaS corporativo a los servidores de videojuegos.',
+    'Somos un estudio de desarrollo de software. Creamos soluciones tecnológicas a medida: del SaaS corporativo a los servidores de videojuegos.',
   'hero.cta': 'Hablemos de tu proyecto',
   'hero.secondary': 'Ver metodología',
   'hero.note': '// respondemos en menos de 24 h',
@@ -109,7 +109,7 @@ const es = {
   'cta.button': 'Escríbenos',
 
   // footer
-  'footer.tagline': 'Software, IA y gaming a medida, hechos para durar.',
+  'footer.tagline': 'Estudio de desarrollo de software.',
   'footer.contact': 'Contacto',
   'footer.social': 'Redes',
   'footer.external': 'se abre en una pestaña nueva',
@@ -129,7 +129,7 @@ const en: Record<DictKey, string> = {
   // meta
   'meta.home.title': 'noxell.dev — Custom software development',
   'meta.home.description':
-    'A software and AI development studio: web, SaaS, automations, chatbots and game servers. Custom solutions for companies.',
+    'A software development studio. Custom solutions for companies.',
   'meta.blog.title': 'Blog — noxell.dev',
   'meta.blog.description':
     'Ideas and resources about web development, artificial intelligence, Astro, SEO and digital products.',
@@ -150,10 +150,10 @@ const en: Record<DictKey, string> = {
   'lang.switch': 'Switch language',
 
   // hero
-  'hero.overline': 'SOFTWARE · AI · GAMING',
+  'hero.overline': 'SOFTWARE DEVELOPMENT STUDIO',
   'hero.title': "Custom software for ideas that don't fit a template.",
   'hero.lead':
-    'We combine advanced development and artificial intelligence to build real technology: from corporate SaaS to game servers.',
+    'We are a software development studio. We build custom technology: from corporate SaaS to game servers.',
   'hero.cta': 'Start your project',
   'hero.secondary': 'See how we work',
   'hero.note': '// we reply within 24 h',
@@ -228,7 +228,7 @@ const en: Record<DictKey, string> = {
   'cta.button': 'Write to us',
 
   // footer
-  'footer.tagline': 'Custom software, AI and gaming, built to last.',
+  'footer.tagline': 'A software development studio.',
   'footer.contact': 'Contact',
   'footer.social': 'Social',
   'footer.external': 'opens in a new tab',

@@ -4,7 +4,7 @@ export const site = {
   locale: 'es_ES',
   language: 'es',
   description:
-    'Estudio de desarrollo de software e inteligencia artificial: web, SaaS, automatizaciones, chatbots y servidores de videojuegos. Soluciones a medida para empresas.',
+    'Estudio de desarrollo de software. Soluciones a medida para empresas.',
   email: 'hola@noxell.dev',
 } as const;
 
