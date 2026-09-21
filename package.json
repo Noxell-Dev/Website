@@ -2,12 +2,12 @@
   "name": "noxell-web",
   "type": "module",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "astro build",
-    "check": "astro check",
     "dev": "astro dev",
-    "preview": "astro preview",
-    "sync": "astro sync"
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.0",

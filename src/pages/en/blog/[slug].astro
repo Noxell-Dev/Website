@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "@layouts/Layout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
 import CtaBand from "@components/CtaBand.astro";
 import { localeUrl, useTranslations } from "@i18n/utils";
 import type { Lang } from "@i18n/ui";
@@ -21,7 +21,7 @@ const t = useTranslations(lang);
 const { Content } = await render(post);
 ---
 
-<Layout lang={lang} esPath={`blog/${post.id.split("/").pop()}`} enPath={`blog/${post.id.split("/").pop()}`} title={`${post.data.title} — noxell.dev`} description={post.data.description}>
+<BaseLayout lang={lang} esPath={`blog/${post.id.split("/").pop()}`} enPath={`blog/${post.id.split("/").pop()}`} title={`${post.data.title} — noxell.dev`} description={post.data.description}>
   <article class="article">
     <a class="back" href={localeUrl(lang, "blog")}>{t("blog.back")}</a>
     <header>
@@ -43,7 +43,7 @@ const { Content } = await render(post);
     author: { "@type": "Organization", name: "noxell.dev" },
     publisher: { "@type": "Organization", name: "noxell.dev" },
   })} />
-</Layout>
+</BaseLayout>
 
 <style>
   .article { max-width: 780px; margin-inline: auto; padding: 80px 24px 120px; }

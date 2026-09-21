@@ -1,5 +1,5 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogListing from "@components/BlogListing.astro";
 import { useTranslations } from "@i18n/utils";
 import type { Lang } from "@i18n/ui";
@@ -8,7 +8,7 @@ const lang: Lang = "en";
 const t = useTranslations(lang);
 ---
 
-<Layout
+<BaseLayout
   lang={lang}
   esPath="blog"
   enPath="blog"
@@ -16,4 +16,4 @@ const t = useTranslations(lang);
   description={t("meta.blog.description")}
 >
   <BlogListing lang={lang} />
-</Layout>
+</BaseLayout>

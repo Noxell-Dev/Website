@@ -57,7 +57,7 @@ public/
   portfolio/                                    → Ilustraciones del portfolio
 src/
   pages/         → Rutas: index.astro (es), en/index.astro, blog/…
-  layouts/       → Layout.astro (metadatos, favicons, estructura común)
+  layouts/       → BaseLayout.astro (metadatos, favicons, estructura común)
   components/    → Header, Hero, Servicios, Portfolio, Blog, …
   content/blog/  → Artículos en es/ y en/ (colecciones de contenido)
   i18n/          → Textos de la interfaz en cada idioma

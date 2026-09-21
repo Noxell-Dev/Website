@@ -1,5 +1,5 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
 import Hero from '@components/Hero.astro';
 import Services from '@components/Services.astro';
 import Portfolio from '@components/Portfolio.astro';
@@ -13,11 +13,11 @@ const lang: Lang = 'es';
 const t = useTranslations(lang);
 ---
 
-<Layout lang={lang} title={t('meta.home.title')} description={t('meta.home.description')}>
+<BaseLayout lang={lang} title={t('meta.home.title')} description={t('meta.home.description')}>
   <Hero lang={lang} />
   <Services lang={lang} />
   <Portfolio lang={lang} />
   <Blog lang={lang} />
   <Methodology lang={lang} />
   <CtaBand lang={lang} />
-</Layout>
+</BaseLayout>

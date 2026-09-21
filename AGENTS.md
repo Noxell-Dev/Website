@@ -16,7 +16,7 @@ estático.
 - Imágenes en `public/images/` (`logorojo.png` es el logo principal,
   ilustraciones en `public/images/portfolio/`); favicons y manifiestos en la
   raíz de `public/`. Los favicons ya están enlazados en
-  `src/layouts/Layout.astro`. Si cambias el logo, actualiza ambos repos de
+  `src/layouts/BaseLayout.astro`. Si cambias el logo, actualiza ambos repos de
   noxell.dev (Website y Dashboard) para mantener la identidad común.
 - Hay skills del proyecto en `.agents/skills/` (astro-framework, seo,
   accessibility, best-practices…): consúltalas antes de tocar esas áreas.

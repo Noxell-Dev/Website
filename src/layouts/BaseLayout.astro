@@ -33,6 +33,24 @@ const urlFor = (locale: Lang) =>
   new URL(localeUrl(locale, pathFor(locale) || undefined), siteUrl);
 const altLocale: Lang = lang === defaultLang ? "en" : defaultLang;
 const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
+const ogLocale = lang === "es" ? "es_ES" : "en_US";
+const ogImageAlt = "Logo de noxell.dev";
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "noxell.dev",
+  url: siteUrl.toString(),
+  logo: new URL("/images/logorojo.png", siteUrl).toString(),
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "noxell.dev",
+  url: siteUrl.toString(),
+  inLanguage: lang === "es" ? "es-ES" : "en-US",
+};
 ---
 
 <!doctype html>
@@ -47,20 +65,43 @@ const altUrl = localeUrl(altLocale, pathFor(altLocale) || undefined);
     <link rel="alternate" hreflang="en" href={urlFor("en")} />
     <link rel="alternate" hreflang="x-default" href={urlFor(defaultLang)} />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0a0a0d" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="noxell.dev" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organizationJsonLd)}
+    />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteJsonLd)}
+    />
+
     <Analytics />
     <SpeedInsights />
   </head>
